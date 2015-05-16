@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arsenal.Brace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,53 +25,42 @@ namespace Arsenal.Equipment
             set { _Contents = value; }
         }
 
-        protected Wearable()
-        { }
-
-        public static Wearable Parse(string s)
+        public Wearable(BraceContent b)
         {
-            Uniform wear = new Uniform();
+            Name = b[0].Name;
 
-            s = s.Substring(1, s.Length - 3);
-
-            s = s.Replace("[", "");
-            s = s.Replace("\"", "");
-
-            List<string> list = s.Split(',').ToList();
-
-            wear.Name = list[0];
-
-            for (int i = 1; i < list.Count; ++i )
+            foreach (var item in b[1])
             {
-                int id = wear.Contents.FindIndex(x => x.Name == list[i]);
-                if(id != -1)
-                    wear.Contents[id].Quanity++;
+                int id = Contents.FindIndex(x => x.Name == item.Name);
+                if (id != -1)
+                    Contents[id].Quanity++;
                 else
-                    wear.Contents.Add( new ItemStack(list[i]));
+                    Contents.Add(new ItemStack(item.Name));
             }
-
-           return wear;
         }
 
-        public static bool TryParse(string s, out Wearable result)
+        public string toArmaArray()
         {
-            if (!CanParse(s))
+            string result = "[" + quote(Name) + ",[";
+            for (int j = 0; j < Contents.Count; j++ )
             {
-                result = null;
-                return false;
+                var item = Contents[j];
+                for (int i = 0; i < item.Quanity; i++)
+                {
+                    
+                    result += quote(item.Name);
+                    if (i != item.Quanity - 1 || j != Contents.Count - 1)
+                        result += ",";
+                }
             }
+            result += "]]";
+            return result;
 
-            result = Parse(s);
-            return true;
         }
 
-        protected static bool CanParse(string s)
+        protected string quote(string what)
         {
-            if (!s.StartsWith("[") || !s.EndsWith("]"))
-            {
-                return false;
-            }
-            return false;
+            return "\"" + what + "\"";
         }
     }
 }

@@ -53,8 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Brace\BraceContent.cs" />
     <Compile Include="CommandViewModel.cs" />
     <Compile Include="Equipment\ItemStack.cs" />
+    <Compile Include="Equipment\Weapon.cs" />
     <Compile Include="Equipment\Wearable.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Equipment\Set.cs" />

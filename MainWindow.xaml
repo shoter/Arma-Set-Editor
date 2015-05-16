@@ -3,11 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
 
-    
 
-    <Grid>
-
-        <Menu>
+    <StackPanel>
+        <Menu Grid.ColumnSpan="3">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Command="{Binding Path=NewCommand}" />
                 <MenuItem Header="_Save" Command="{Binding Path=SaveCommand}" />
@@ -18,6 +16,20 @@
             <MenuItem Header="_Options" />
             <MenuItem Header="_Help" />
         </Menu>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="13*" />
+        </Grid.ColumnDefinitions>
+            <DockPanel LastChildFill="True" Grid.Column="1">
+                <StackPanel >
+                    <Button Content="Button" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button Content="Button" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </StackPanel>
+            </DockPanel>
 
-    </Grid>
+
+        </Grid>
+    </StackPanel>
 </Window>
