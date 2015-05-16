@@ -10,3 +10,6 @@ E:\programowanie\C#\WPF\Arsenal\Arsenal\obj\Debug\Arsenal.Properties.Resources.r
 E:\programowanie\C#\WPF\Arsenal\Arsenal\obj\Debug\Arsenal.csproj.GenerateResource.Cache
 E:\programowanie\C#\WPF\Arsenal\Arsenal\obj\Debug\Arsenal.exe
 E:\programowanie\C#\WPF\Arsenal\Arsenal\obj\Debug\Arsenal.pdb
+E:\programowanie\C#\WPF\Arsenal\bin\Debug\Arsenal.exe.config
+E:\programowanie\C#\WPF\Arsenal\obj\Debug\Arsenal.exe
+E:\programowanie\C#\WPF\Arsenal\obj\Debug\Arsenal.pdb
