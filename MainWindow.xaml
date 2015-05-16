@@ -1,0 +1,23 @@
+﻿<Window x:Class="Arsenal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+
+    
+
+    <Grid>
+
+        <Menu>
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Command="{Binding Path=NewCommand}" />
+                <MenuItem Header="_Save" Command="{Binding Path=SaveCommand}" />
+                <MenuItem Header="_Load" Command="{Binding Path=LoadCommand}" />
+                <MenuItem Header="_Exit" Command="{Binding Path=CloseCommand}" />
+            </MenuItem>
+            <MenuItem Header="_Edit" />
+            <MenuItem Header="_Options" />
+            <MenuItem Header="_Help" />
+        </Menu>
+
+    </Grid>
+</Window>
