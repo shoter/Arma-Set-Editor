@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Arsenal.Gui.ArsenalItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:arsenal="clr-namespace:Arsenal.GUI"
+             xmlns:viewModel="clr-namespace:Arsenal.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <DockPanel>
+        <TabControl d:DataContext="{d:DesignData viewModel:SetViewModel }">
+            <TabItem Header="Uniform" >
+                <arsenal:WearableView DataContext="{Binding Uniform}"></arsenal:WearableView>
+            </TabItem>
+            <TabItem Header="Vest" >
+                <arsenal:WearableView DataContext="{Binding Vest}"></arsenal:WearableView>
+            </TabItem>
+            <TabItem Header="Backpack" >
+                <arsenal:WearableView DataContext="{Binding Backpack}"></arsenal:WearableView>
+            </TabItem>
+            <TabItem Header="Main Weapon" >
+                <arsenal:WeaponView DataContext="{Binding MainWeapon}"></arsenal:WeaponView>
+            </TabItem>
+            <TabItem Header="Secondary Weapon" >
+                <arsenal:WeaponView DataContext="{Binding SecondWeapon}"></arsenal:WeaponView>
+            </TabItem>
+            <TabItem Header="Hand Weapon" >
+                <arsenal:WeaponView DataContext="{Binding HandWeapon}"></arsenal:WeaponView>
+            </TabItem>
+            <TabItem Header="Items" >
+                <arsenal:ItemView></arsenal:ItemView>
+            </TabItem>
+            <TabItem Header="Chracter" >
+                <arsenal:CharacterView></arsenal:CharacterView>
+            </TabItem>
+            <TabItem Header="Other" >
+                <arsenal:OtherView></arsenal:OtherView>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</UserControl>

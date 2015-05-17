@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arsenal.Equipment
 {
-    public class Wearable
+    public class Wearable :ICloneable
     {
         private string _Name;
 
@@ -39,6 +39,9 @@ namespace Arsenal.Equipment
             }
         }
 
+        private Wearable()
+        {}
+
         public string toArmaArray()
         {
             string result = "[" + quote(Name) + ",[";
@@ -62,5 +65,19 @@ namespace Arsenal.Equipment
         {
             return "\"" + what + "\"";
         }
-    }
+    
+        public object Clone()
+        {
+ 	        Wearable wear = new Wearable();
+            wear.Name = Name;
+            List<ItemStack> clonedContents = new List<ItemStack>(Contents.Count);
+
+            Contents.ForEach((item) =>
+                {
+                    clonedContents.Add(item.Clone() as ItemStack);
+                });
+            wear.Contents = clonedContents;
+            return wear;
+        }
+}
 }

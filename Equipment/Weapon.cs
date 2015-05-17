@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Arsenal.Equipment
 {
-    class Weapon
+    public class Weapon : ICloneable
     {
         private string _Name;
 
@@ -44,6 +44,9 @@ namespace Arsenal.Equipment
             Magazine = b[2].Name;
         }
 
+        private Weapon()
+        { }
+
         public string toArmaArray()
         {
             string result = "[" + quote(Name) + ",[";
@@ -64,6 +67,15 @@ namespace Arsenal.Equipment
         protected string quote(string what)
         {
             return "\"" + what + "\"";
+        }
+
+        public object Clone()
+        {
+            Weapon wep = new Weapon();
+            wep.Name = Name;
+            wep.Magazine = Magazine;
+            Attachments = new List<string>(Attachments);
+            return wep;
         }
     }
 }

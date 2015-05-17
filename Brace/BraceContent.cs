@@ -14,6 +14,10 @@ namespace Arsenal.Brace
         BraceContent Parent;
         public bool IsContainer = false;
 
+        public int Count
+        {
+            get { return Childrens.Count; }
+        }
         public BraceContent this[int i]
         {
             get { return Childrens[i]; }
@@ -59,7 +63,8 @@ namespace Arsenal.Brace
             BraceContent current = root;
             string temp = "";
             bool isParsing = false;
-            for(int i = 1; i < s.Count(); ++i)
+            int size = s.Count();
+            for (int i = 1; i < size; ++i)
             {
                 if (s[i] == ',' || (Char.IsWhiteSpace(s[i]) && isParsing == false)) continue;
 

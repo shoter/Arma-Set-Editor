@@ -41,5 +41,11 @@ namespace Arsenal
                     Debug.Fail(msg);
             }
         }
+
+        public String display(string str)
+        {
+            str = str.Replace("_", "__");
+            return str;
+        }
     }
 }

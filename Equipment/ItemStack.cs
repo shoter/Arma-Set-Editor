@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arsenal.Equipment
 {
-    public class ItemStack
+    public class ItemStack : ICloneable
     {
         public int Quanity;
         public string Name;
@@ -20,6 +20,11 @@ namespace Arsenal.Equipment
         public override string ToString()
         {
             return Name + " - " + Quanity.ToString();
+        }
+
+        public object Clone()
+        {
+            return new ItemStack(Name, Quanity);
         }
     }
 }

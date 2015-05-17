@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Arsenal.Equipment
 {
-    class Set
+    class Set : ICloneable
     {
         private string _Name;
         private Wearable _Uniform;
@@ -30,6 +31,9 @@ namespace Arsenal.Equipment
         private string _Head;
         private string _Voice;
         private string _MysteriousProperty = "";
+
+        private Color _Color = Color.FromRgb(0, 0, 0);
+
         #region Properties
         public string Name
         {
@@ -118,6 +122,15 @@ namespace Arsenal.Equipment
             get { return _MysteriousProperty; }
             set { _MysteriousProperty = value; }
         }
+        public Color Color
+        {
+            get { return _Color; }
+            set { _Color = value; }
+        }
+        public SolidColorBrush SolidColorBrush
+        {
+            get { return new SolidColorBrush(Color); }
+        }
 
         
         #endregion //Properties
@@ -145,6 +158,23 @@ namespace Arsenal.Equipment
             Head = content[10][0].Name;
             Voice = content[10][1].Name;
             MysteriousProperty = content[10][2].Name;
+
+            if (content.Count >= 12)
+            {
+                _Color.R = (byte) (float.Parse(content[11][0].Name)*255);
+                _Color.G = (byte) (float.Parse(content[11][1].Name)*255);
+                _Color.B = (byte) (float.Parse(content[11][2].Name)*255);
+                _Color.A = (byte) (float.Parse(content[11][3].Name)*255);
+            }
+            else
+            {
+                _Color = Color.FromArgb(255, 0, 0, 0);
+            }
+        }
+
+        private Set()
+        {
+
         }
 
 
@@ -184,5 +214,39 @@ namespace Arsenal.Equipment
 
 
 
+
+        public object Clone()
+        {
+            Set set = new Set();
+
+            set.Name = Name;
+            set.Uniform = Uniform.Clone() as Wearable;
+            set.Vest = Vest.Clone() as Wearable;
+            set.Backpack = Backpack.Clone() as Wearable;
+
+            set.Cap = Cap;
+            set.Glass = Glass;
+            set.Binocular = Binocular;
+
+            set.MainWeapon = MainWeapon.Clone() as Weapon;
+            set.SecondWeapon = SecondWeapon.Clone() as Weapon;
+            set.HandWeapon = HandWeapon.Clone() as Weapon;
+
+            set.Map = Map;
+            set.Compass = Compass;
+            set.Watch = Watch;
+            set.GPS = GPS;
+
+            set.Head = Head;
+            set.Voice = Voice;
+            set.MysteriousProperty = MysteriousProperty;
+
+            set._Color.R = _Color.R;
+            set._Color.G = _Color.G;
+            set._Color.B = _Color.B;
+            set._Color.A = _Color.A;
+
+            return set;
+        }
     }
 }

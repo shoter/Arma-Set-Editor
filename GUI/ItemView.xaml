@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="Arsenal.GUI.ItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="White">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+
+        <Style TargetType="DockPanel">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Button Name="CopyButton" Content="Copy from" Click="MainButtonClick"/>
+        </StackPanel>
+        
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <DockPanel>
+                    <Label Content="Head"/>
+                    <TextBox Name="Cap" Text="{Binding Cap}"/>
+                </DockPanel>
+
+                <DockPanel>
+                    <Label Content="Glassess"/>
+                    <TextBox Name="Glass" Text="{Binding Glass}"/>
+                </DockPanel>
+
+                <DockPanel>
+                    <Label Content="Binocular"/>
+                    <TextBox Name="Binocular" Text="{Binding Binocular}"/>
+                </DockPanel>
+            
+                <DockPanel>
+                    <Label Content="Map"/>
+                    <TextBox Name="Map" Text="{Binding Map}"/>
+                </DockPanel>
+            
+                <DockPanel>
+                    <Label Content="Compass"/>
+                    <TextBox Name="Compass" Text="{Binding Compass}"/>
+                </DockPanel>
+
+                <DockPanel>
+                <Label Content="Watch"/>
+                    <TextBox Name="Watch" Text="{Binding Watch}"/>
+                </DockPanel>
+
+                <DockPanel>
+                    <Label Content="GPS"/>
+                    <TextBox Name="GPS" Text="{Binding GPS}"/>
+                </DockPanel>
+
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

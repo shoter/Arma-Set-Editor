@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="Arsenal.GUI.WearableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:equipment="clr-namespace:Arsenal.Equipment"
+             xmlns:viewModel="clr-namespace:Arsenal.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="450" Background="White">
+    
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+
+
+        <DataTemplate x:Key="ItemsTemplate" DataType="viewModel:ItemStackViewModel">
+            <Grid Margin="0,0,0,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Text="{Binding Name}"></TextBox>
+                <TextBox Text="{Binding Quanity}" Padding="5,1,5,0" VerticalContentAlignment="Center" Grid.Column="1"></TextBox>
+                <Button Content="+" FontSize="13" FontWeight="Bold" MinWidth="20" Grid.Column="2" Click="ChangeQuanity"/>
+                <Button Content="-" FontSize="13" FontWeight="Bold" MinWidth="20" Grid.Column="3" Click="ChangeQuanity"></Button>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.ColumnSpan="2">
+            <Label Content="Name :"/>
+            <TextBox Text="{Binding Name}"/>
+        </DockPanel>
+
+        <ListBox Name="ItemsListBox" ItemsSource="{Binding ItemStack}" Grid.Column="0" Grid.Row="1" ItemTemplate="{StaticResource ItemsTemplate}" HorizontalContentAlignment="Stretch">
+
+        </ListBox>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <Button Name="AddButton" Content="Add" Click="MainButtonClick"/>
+            <Button Name="RemoveButton"  Content="Remove" Click="MainButtonClick"/>
+            <Button Name="CopyButton" Content="Copy from" Click="MainButtonClick"/>
+            <Button Name="ClearButton" Content="Clear all" Click="MainButtonClick"/>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>
